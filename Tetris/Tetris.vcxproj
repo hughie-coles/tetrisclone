@@ -69,7 +69,16 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ExecutablePath>C:\development\DevLib\SDL2_image-2.0.4\lib\x64\;C:\development\DevLib\SDL2_mixer-2.0.4\lib\x64\;C:\development\DevLib\SDL2-2.0.9\lib\x64\;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>C:\development\DevLib\SDL2_mixer-2.0.4\include\;C:\development\DevLib\SDL2_image-2.0.4\include\;C:\development\DevLib\SDL2-2.0.9\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\development\DevLib\SDL2-2.0.9\lib\x64;C:\development\DevLib\SDL2_mixer-2.0.4\lib\x64\;C:\development\DevLib\SDL2_image-2.0.4\lib\x64\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ExecutablePath>C:\development\DevLib\SDL2_mixer-2.0.4\lib\x64\;C:\development\DevLib\SDL2_image-2.0.4\lib\x64\;C:\development\DevLib\SDL2-2.0.9\lib\x64\;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>C:\development\DevLib\SDL2_mixer-2.0.4\include\;C:\development\DevLib\SDL2_image-2.0.4\include\;C:\development\DevLib\SDL2-2.0.9\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\development\DevLib\SDL2_mixer-2.0.4\lib\x64\;C:\development\DevLib\SDL2_image-2.0.4\lib\x64\;C:\development\DevLib\SDL2-2.0.9\lib\x64\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -77,6 +86,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL2.lib SDL2main.lib SDL2_mixer.lib SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -85,6 +97,10 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -115,6 +131,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
