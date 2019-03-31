@@ -2,7 +2,7 @@
 
 
 #include <string> 
-class SDL_Window;
+struct SDL_Window;
 struct SDL_Surface;
 
 class Game
@@ -13,25 +13,15 @@ public:
 	bool Init();
 	void Run();
 	void CleanUp();
-
-
 	~Game();
-
-
 
 private:
 	SDL_Window *_window;
 	SDL_Surface *_backBuffer;
-
+	SDL_Surface *_spriteSheet;
 
 	const int _screenWidth = 800;
-	const int _screenHeight = 600;
+	const int _screenHeight = 640;
 	const std::string windowTitle = "Tetris";
-
-
-
-
-
-
 };
 
